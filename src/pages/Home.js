@@ -1,16 +1,12 @@
 import React from 'react'
-import './App.css';
-
+import '../styles/home.scss'
 export const Home = () => {
     return (
-        <div className="App">
-
-
-
+        <div className="app">
             <div className="app__body">
 
 
-                
+
             </div>
         </div>
     )
