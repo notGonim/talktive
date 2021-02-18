@@ -12,6 +12,9 @@ export const SidebarChat = ({ addNewChat }) => {
     }, [])
     const createChat = () => {
         const roomName = prompt('Please enter name for chat room')
+        if (roomName) {
+            //connect to databases and apply stuff
+        }
     }
 
     return !addNewChat ? (
