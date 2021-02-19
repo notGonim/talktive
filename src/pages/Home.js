@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Login } from '../components/auth/Login'
 import { Chat } from '../components/chat/Chat'
 import { Sidebar } from '../components/sidebar/Sidebar'
 import '../styles/home.scss'
@@ -11,8 +12,7 @@ export const Home = () => {
 
             {!user ?
                 (
-                    <h1>Login</h1>
-                )
+                    <Login />)
                 :
                 (
                     <div className="app__body">
