@@ -10,6 +10,11 @@ export const Chat = () => {
         <div className="chatContainer">
             <div className="chat__header">
                 <Avatar />
+                <div className="chat__headerInfo">
+                    <h3>Room name</h3>
+                    <p>Last seen at ...</p>
+                </div>
+
             </div>
             <div className="chat__body">
 
