@@ -1,5 +1,6 @@
 import { Avatar } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
+import db from '../../firebase'
 import '../../styles/sidebarChat.scss'
 
 export const SidebarChat = ({ addNewChat, id, name }) => {
@@ -13,7 +14,10 @@ export const SidebarChat = ({ addNewChat, id, name }) => {
     const createChat = () => {
         const roomName = prompt('Please enter name for chat room')
         if (roomName) {
-            //connect to databases and apply stuff
+            //connect to databases and add room to the firebase databases 
+            db.collection('rooms').add({
+                room: roomName,
+            })
         }
     }
 
