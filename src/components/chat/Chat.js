@@ -1,6 +1,6 @@
 import { Avatar, IconButton } from '@material-ui/core'
 import React, { useState, useEffect } from 'react'
-import './chat.scss'
+import '../../styles/chat.scss'
 import SearchIcon from '@material-ui/icons/Search';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -15,7 +15,7 @@ export const Chat = () => {
     useEffect(() => {
         setSeeds((Math.floor(Math.random() * 5000)))
     }, [])
-    const sendMessage = () => {
+    const sendMessage = (e) => {
         e.preventDefault()
     }
     return (
