@@ -3,9 +3,10 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import { Login } from '../components/auth/Login'
 import { Chat } from '../components/chat/Chat'
 import { Sidebar } from '../components/sidebar/Sidebar'
+import { useStateValue } from '../Context/UserProvider'
 import '../styles/home.scss'
 export const Home = () => {
-    const [user, setUser] = useState(null)
+    const [{ user}, dispatch] = useStateValue()
     return (
         <div className="app">
 

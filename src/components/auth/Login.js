@@ -1,14 +1,23 @@
 import { Button } from '@material-ui/core'
 import React from 'react'
+import { userAction } from '../../Context/user-reducer'
+import { useStateValue } from '../../Context/UserProvider'
 import { auth, provider } from '../../firebase'
 import '../../styles/login.scss'
 
 export const Login = () => {
 
-//// signIn with google
+    const [{ }, dispatch] = useStateValue()
+
+
     const signIn = () => {
         auth.signInWithPopup(provider)
-            .them(res => { })
+            .then(res => {
+                dispatch({
+                    type: userAction.SET_USER,
+                    user: res.user
+                })
+            })
             .catch(e => alert(e.message))
     }
     return (
