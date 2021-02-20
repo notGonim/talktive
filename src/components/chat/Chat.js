@@ -57,7 +57,7 @@ export const Chat = () => {
                 <Avatar src={`https://avatars.dicebear.com/api/human/:${seeds}.svg`} />
                 <div className="chat__headerInfo">
                     <h3>{roomName}</h3>
-                    <p>Last seen at ...</p>
+                    <p>{new Date(messages[messages.length - 1]?.timestamp?.toDate()).toUTCString()}</p>
                 </div>
                 <div className="chat__chatHeaderRight">
                     <IconButton>
@@ -73,7 +73,7 @@ export const Chat = () => {
             </div>
             <div className="chat__body">
                 {messages.map((msg) => (
-                    <p className={`chat__message ${message.name === user.displayName && ' chat__reciver'}`}>
+                    <p className={`chat__message ${msg.name === user.displayName && ' chat__reciver'}`}>
                         <span className="chat__name">{msg.name}</span>
                         {msg.message}
                         <span className="chat__timestamp">
