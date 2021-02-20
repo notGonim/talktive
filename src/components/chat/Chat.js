@@ -8,9 +8,12 @@ import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
 import { useParams } from 'react-router';
 import db from '../../firebase';
+import firebase from 'firebase';
+import { useStateValue } from '../../Context/UserProvider';
 
 export const Chat = () => {
 
+    const [{ user }, dispatch] = useStateValue()
     const [seeds, setSeeds] = useState('')
     const [input, setInput] = useState('')
     const { roomId } = useParams()
@@ -28,16 +31,25 @@ export const Chat = () => {
                 .onSnapshot(snap => (
                     setMessages(snap.docs.map(doc => doc.data()))
                 ))
-            console.log(messages)
         }
     }, [roomId])
-
 
     useEffect(() => {
         setSeeds((Math.floor(Math.random() * 5000)))
     }, [])
+
     const sendMessage = (e) => {
         e.preventDefault()
+        db.collection('rooms')
+            .doc(roomId)
+            .collection('messages')
+            .add({
+                message: input,
+                name: user.displayName,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            })
+        setInput("")
+
     }
     return (
         <div className="chatContainer">
