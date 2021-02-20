@@ -73,7 +73,7 @@ export const Chat = () => {
             </div>
             <div className="chat__body">
                 {messages.map((msg) => (
-                    <p className={`chat__message ${true && ' chat__reciver'}`}>
+                    <p className={`chat__message ${message.name === user.displayName && ' chat__reciver'}`}>
                         <span className="chat__name">{msg.name}</span>
                         {msg.message}
                         <span className="chat__timestamp">
